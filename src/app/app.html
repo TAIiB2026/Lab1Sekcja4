@@ -1,0 +1,29 @@
+<h1 appMyDirective>{{title + '...'}}!</h1>
+<p appMyDirective="blue">Wartość globalnego licznika to: {{licznikGlobalny}}</p>
+<p appMyDirective="yellow">Treść pod dyrektywę</p>
+
+<div>
+  <input placeholder="Podaj nazwę komponentu..." [(ngModel)]="nowaNazwaInput" />
+  <button (click)="onDodajKomponentClick()">Dodaj komponent</button>
+</div>
+
+<div>
+  <button (click)="czyMoznaUsuwac = !czyMoznaUsuwac">
+    {{czyMoznaUsuwac ? 'Wyłącz usuwanie' : 'Włącz usuwanie'}}
+  </button>
+</div>
+
+<!-- <app-second *ngFor="let item of tablica" [nazwa]="item" (zmianaLicznika)="onZmianaLicznika()" (usunKomponent)="onUsunKomponent($event)" [uprawnienieDoUsuwania]="czyMoznaUsuwac"></app-second> -->
+
+@for(item of tablica; track item) {
+  <app-second [nazwa]="item" (zmianaLicznika)="onZmianaLicznika()" (usunKomponent)="onUsunKomponent($event)" [uprawnienieDoUsuwania]="czyMoznaUsuwac"></app-second>
+} @empty {
+  <div>
+    Brak elementów w tablicy
+  </div>
+}
+
+<!-- <app-second nazwa="Pierwszy" (zmianaLicznika)="onZmianaLicznika()"></app-second>
+<app-second nazwa="Drugi" (zmianaLicznika)="onZmianaLicznika()"></app-second>
+<app-second nazwa="Trzeci" (zmianaLicznika)="onZmianaLicznika()"></app-second>
+<app-second nazwa="Czwarty" (zmianaLicznika)="onZmianaLicznika()"></app-second> -->

@@ -1,0 +1,20 @@
+<p>second works with nazwa = {{nazwa}}!</p>
+<p>Wartość licznika to: {{licznik}}</p>
+
+<button (click)="onLicznikClick()">Podnieś wartość licznika</button>
+<!-- <button *ngIf="uprawnienieDoUsuwania; else brakUprawnienTemplate" (click)="onUsunKomponentClick()">Usuń komponent</button>
+
+<ng-template #brakUprawnienTemplate>
+    Brak uprawnień do usuwania przycisku
+</ng-template> -->
+
+@if(uprawnienieDoUsuwania) {
+    <button (click)="onUsunKomponentClick()">Usuń komponent</button>
+} @else if (licznik > 5) {
+    Brak uprawnień do usuwania przycisku, ale licznik przekroczył wartość 5
+}
+@else {
+    Brak uprawnień do usuwania przycisku
+}
+
+<hr />
