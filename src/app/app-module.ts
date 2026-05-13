@@ -11,14 +11,12 @@ import { Menu } from './menu/menu';
 import { Licznik } from './licznik/licznik';
 import { SterownikLicznika } from './sterownik-licznika/sterownik-licznika';
 import { LicznikGlobalny } from './services/licznik-globalny';
+import { Formularz } from './formularz/formularz';
 
 @NgModule({
-  declarations: [App, Second, MyDirective, Menu, Licznik, SterownikLicznika],
+  declarations: [App, Second, MyDirective, Menu, Licznik, SterownikLicznika, Formularz],
   imports: [BrowserModule, CommonModule, AppRoutingModule, FormsModule],
-  providers: [
-    provideBrowserGlobalErrorListeners(), 
-    LicznikGlobalny
-  ],
+  providers: [provideBrowserGlobalErrorListeners(), LicznikGlobalny],
   bootstrap: [App],
 })
 export class AppModule {}

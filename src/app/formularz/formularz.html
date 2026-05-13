@@ -1,0 +1,29 @@
+<form #formularz="ngForm" (ngSubmit)="onSubmit(formularz)">
+    <div>
+        <label for="name">Imię: </label>
+        <input required minlength="3" type="text" 
+            id="name" name="name" [(ngModel)]="name" (ngModelChange)="onNameChange($event)" />
+    </div>
+    <div>
+        <label for="surname">Nazwisko: </label>
+        <input required minlength="5" type="text" 
+            id="surname" name="surname" [(ngModel)]="surname" />
+    </div>
+    <div>
+        <label for="dateOfBirth">Data urodzenia: </label>
+        <input required type="date" 
+            id="dateOfBirth" name="dateOfBirth" [(ngModel)]="dateOfBirth" />
+    </div>
+
+    <!-- <button type="button">Test</button>
+    <input type="button" value="Test2" /> -->
+    <input [disabled]="!formularz.valid" type="submit" value="Zapisz" />
+</form>
+
+<div class="licznik">
+    <div>Imię: {{name}}</div>
+    <div>Nazwisko: {{surname}}</div>
+    <div>Data urodzenia: {{dateOfBirth}}</div>    
+
+    <button (click)="wyzerujWartosci()">Wyzeruj</button>
+</div>
