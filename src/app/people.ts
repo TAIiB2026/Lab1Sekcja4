@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Person } from './classes/person';
+import { IPeopleRepositoryInterface } from './interfaces/people-repository.interface';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
-export class PeopleService {
+export class PeopleService implements IPeopleRepositoryInterface {
   private repo: Person[] = [
     new Person(1, "Jan", "Kowalski", new Date(1990, 2, 30)),
     new Person(2, "Adam", "Nowak", new Date(1986, 3, 10)),
@@ -24,5 +26,16 @@ export class PeopleService {
     }
 
     throw new Error("Nie odnaleziono osoby o id = " + id);
+  }
+
+  Post(name: string, surname: string, dateOfBirth: Date): Observable<boolean> {
+    if(this.repo.length >= 10) {
+      return of(false);
+    }
+
+    const newID = Math.max(...this.repo.map(x => x.id)) + 1;
+    const newObj = new Person(newID, name, surname, dateOfBirth);
+    this.repo.push(newObj);
+    return of(true);
   }
 }
