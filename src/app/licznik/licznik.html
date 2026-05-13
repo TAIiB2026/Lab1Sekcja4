@@ -1,0 +1,23 @@
+<div>
+    Licznik lokalny: {{lokalny.licznik$ | async}}
+
+    <div>
+        <button (click)="podniesLokalny()">Podnieś licznik lokalny</button>
+    </div>
+</div>
+
+<div>
+    Licznik sterownika: {{sterownika.licznik$ | async}}
+
+    <div>
+        <button (click)="podniesSterownika()">Podnieś licznik sterownika</button>
+    </div>
+</div>
+
+<div>
+    Licznik globalny: {{globalny.licznik$ | async}}
+
+    <div>
+        <button (click)="podniesGlobalny()">Podnieś licznik globalny</button>
+    </div>
+</div>
